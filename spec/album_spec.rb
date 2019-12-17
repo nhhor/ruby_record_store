@@ -71,6 +71,32 @@ describe '#Album' do
     end
   end
 
+  describe('.search') do
+    it("Searches for matching albums by name") do
+      album1 = Album.new("Giant Steps", nil)
+      album1.save()
+      album2 = Album.new("Blue", nil)
+      album2.save()
+      album3 = Album.new("Green Steps", nil)
+      album3.save()
+
+      expect(Album.search("Steps")).to(eq([album1,album3]))
+    end
+  end
+
+  describe('.sort') do
+    it('sorts by alphebetical order') do
+    album1 = Album.new("Giant Steps", nil)
+    album1.save()
+    album2 = Album.new("Blue", nil)
+    album2.save()
+    album3 = Album.new("Green Steps", nil)
+    album3.save()
+    expect(Album.sort()).to(eq([album2, album1, album3]))
+  end
+end
+
+
 end
 
 # end

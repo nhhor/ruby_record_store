@@ -13,6 +13,10 @@ class Album
     @@albums.values()
   end
 
+  def self.search(x)
+    @@albums.values().select {|e| /#{x}/i.match? e.name}
+  end
+
   def save
     @@albums[self.id] = Album.new(self.name, self.id)
   end
@@ -20,6 +24,7 @@ class Album
   def ==(album_to_compare)
     self.name() == album_to_compare.name()
   end
+
   def self.clear
     @@albums = {}
     @@total_rows = 0
@@ -36,5 +41,11 @@ class Album
   def delete
     @@albums.delete(self.id)
   end
+
+  def self.sort()
+    @@albums.values().sort { |a, b| a.name <=> b.name }
+    # @@albums.values()
+  end
+
 
 end
