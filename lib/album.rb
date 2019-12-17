@@ -1,12 +1,16 @@
 class Album
-  attr_reader :id, :name #Our new save method will need reader methods.
+  attr_reader :id, :name, :year, :genre, :artist ##CHANGE#Our new save method will need reader methods.
+  # attr_accessor :name
 
   @@albums = {}
   @@total_rows = 0 # We've added a class variable to keep track of total rows and increment the value when an ALbum is added.
 
-  def initialize(name, id) # We've added id as a second parameter.
+  def initialize(name, id, year, genre, artist) ##CHANGE # We've added id as a second parameter.
     @name = name
     @id = id || @@total_rows += 1  # We've added code to handle the id.
+    @year = year
+    @genre = genre
+    @artist = artist
   end
 
   def self.all
@@ -18,7 +22,7 @@ class Album
   end
 
   def save
-    @@albums[self.id] = Album.new(self.name, self.id)
+    @@albums[self.id] = Album.new(self.name, self.id, nil, nil, nil) #CHANGE
   end
 
   def ==(album_to_compare)
@@ -34,8 +38,11 @@ class Album
     @@albums[id]
   end
 
-  def update(name)
-    @name = name
+  def update(name, year, genre, artist) #CHANGE
+    @name = (name != '') ? name : @name
+    @year = (year != '') ? year : @year
+    @genre = (genre != '') ? genre : @genre
+    @artist = (artist != '') ? artist : @artist
   end
 
   def delete
