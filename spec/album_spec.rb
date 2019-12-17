@@ -96,6 +96,20 @@ describe '#Album' do
   end
 end
 
+# describe('#sold') do
+#   it('sorts by alphebetical order') do
+#   album1 = Album.new("Giant Steps", nil, nil, nil, nil)
+#   album1.save()
+#   album2 = Album.new("Blue", nil, nil, nil, nil)
+#   album2.save()
+#   album3 = Album.new("Green Steps", nil, nil, nil, nil)
+#   album3.save()
+#   album2.sold()
+#
+#   expect(@@sold_albums).to(eq([album2]))
+# end
+# end
+
 
 end
 

@@ -3,6 +3,7 @@ class Album
   # attr_accessor :name
 
   @@albums = {}
+  # @@sold_albums = {}
   @@total_rows = 0 # We've added a class variable to keep track of total rows and increment the value when an ALbum is added.
 
   def initialize(name, id, year, genre, artist) ##CHANGE # We've added id as a second parameter.
@@ -22,7 +23,7 @@ class Album
   end
 
   def save
-    @@albums[self.id] = Album.new(self.name, self.id, nil, nil, nil) #CHANGE
+    @@albums[self.id] = Album.new(self.name, self.id, "", "", "") #CHANGE
   end
 
   def ==(album_to_compare)
@@ -53,6 +54,12 @@ class Album
     @@albums.values().sort { |a, b| a.name <=> b.name }
     # @@albums.values()
   end
+
+  # def sold()
+  #   @@sold_albums[self.id].push(@@albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist))
+  #   @@albums.delete(self.id)
+  #   # @@albums.values()
+  # end
 
 
 end
